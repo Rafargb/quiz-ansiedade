@@ -254,7 +254,25 @@ const resultDetails = {
         symptoms: ["Racing thoughts", "Tiredness that sleep doesn't fix", "Constant mild irritation", "Difficulty unwinding"],
         break: "<p>This is not laziness. And it's not emotional weakness either.</p><p class='highlight-italic'>→ Your body just hasn't learned how to exit the alert state yet.</p>",
         concept: "<p>Resting is not stopping.</p><p class='highlight-italic'>👉 It's an internal state of the body.</p>",
-        video: "alerta_constante.MOV"
+        video: "alerta_constante.MOV",
+        checkout: {
+            title: "Constant Alert",
+            subtitle: "Your Journey to Calm Begins NOW. Discover how to turn off your body's alarm mode and reclaim your peace.",
+            basic: {
+                title: "1-Week Reset",
+                price: "9.99",
+                sub: "Perfect to experience the method and feel the very first relief from anxiety.",
+                bullets: ["✔ Immediate access to the 4D Method (Module 1)", "✔ 15-minute daily practical exercises", "✔ Email support"],
+                btn: "CHOOSE THIS"
+            },
+            vip: {
+                title: "1-Month Complete",
+                price: "29.99",
+                sub: "The ideal timeframe to quiet your mind, regulate your sleep, and break the cycle of chronic stress.",
+                bullets: ["✔ Everything included in the weekly plan", "✔ Action Plan: \"First Steps to Calm\"", "✔ VIP individual support via WhatsApp"],
+                btn: "I WANT VIP"
+            }
+        }
     },
     sobrecarga: {
         status: "🟠 Silent Overload",
@@ -262,7 +280,25 @@ const resultDetails = {
         symptoms: ["Frequent tiredness", "Feeling of mental heaviness", "Lack of energy throughout the day", "Difficulty relaxing completely"],
         break: "<p>This is not just a heavy routine.</p><p class='highlight-italic'>👉 It's an accumulation your body hasn't been able to release yet.</p>",
         concept: "<p>The problem is not how much you do.</p><p class='highlight-italic'>👉 It's how much your body can recover.</p>",
-        video: "overload.MOV"
+        video: "overload.MOV",
+        checkout: {
+            title: "Silent Overload",
+            subtitle: "Your Journey to Rebalance Begins NOW. Effectively manage stress before it turns into complete burnout.",
+            basic: {
+                title: "1-Week Energy Boost",
+                price: "9.99",
+                sub: "Take the first step against persistent fatigue and regain your mental clarity.",
+                bullets: ["✔ Immediate access to the 4D Method (Module 1)", "✔ Practical tools to combat mental fatigue", "✔ Email support"],
+                btn: "CHOOSE THIS"
+            },
+            vip: {
+                title: "1-Month Vitality",
+                price: "29.99",
+                sub: "Shield your mind against exhaustion and solidly rebuild your daily energy levels.",
+                bullets: ["✔ Everything included in the weekly plan", "✔ Activation Protocol: \"Awaken Your Energy\"", "✔ VIP individual support via WhatsApp"],
+                btn: "I WANT VIP"
+            }
+        }
     },
     desequilibrio: {
         status: "🟢 Occasional Imbalance",
@@ -270,7 +306,25 @@ const resultDetails = {
         symptoms: ["Good days and hard days with no clear explanation", "Energy swings", "Moments of occasional anxiety", "Feeling of emotional instability"],
         break: "<p>This is not a lack of control.</p><p class='highlight-italic'>👉 It's a lack of consistency in your system's functioning.</p>",
         concept: "<p>Calmness cannot depend on the day.</p><p class='highlight-italic'>👉 It must be sustained.</p>",
-        video: "desequilibrio_emocional.MOV"
+        video: "desequilibrio_emocional.MOV",
+        checkout: {
+            title: "Occasional Imbalance",
+            subtitle: "Your Journey to Control Begins NOW. Take the reins of your emotional life and master your responses to stress.",
+            basic: {
+                title: "1-Week Control",
+                price: "9.99",
+                sub: "Ideal for learning how to cut off anxiety spikes the exact moment they arise.",
+                bullets: ["✔ Immediate access to the 4D Method (Module 1)", "✔ Quick-relief techniques for high-stress moments", "✔ Email support"],
+                btn: "CHOOSE THIS"
+            },
+            vip: {
+                title: "1-Month Mastery",
+                price: "29.99",
+                sub: "Develop long-term emotional stability and learn to respond calmly under any pressure.",
+                bullets: ["✔ Everything included in the weekly plan", "✔ Digital Intervention Kit: \"Emotional First Aid\"", "✔ VIP group & individual support via WhatsApp"],
+                btn: "I WANT VIP"
+            }
+        }
     }
 };
 
@@ -302,8 +356,21 @@ function showResult() {
     document.getElementById('vsl-score-val').innerText = totalScore;
     
     const checkoutStatusEl = document.getElementById('checkout-status');
-    if(checkoutStatusEl) {
-        checkoutStatusEl.innerText = data.status.replace(/[^a-zA-Záàâãéèêíïóôõöúçñ\s]/g, '').trim();
+    if(checkoutStatusEl && data.checkout) {
+        checkoutStatusEl.innerText = data.checkout.title;
+        document.getElementById('chk-main-subtitle').innerText = data.checkout.subtitle;
+        
+        document.getElementById('chk-basic-title').innerText = data.checkout.basic.title;
+        document.getElementById('chk-basic-price').innerText = data.checkout.basic.price;
+        document.getElementById('chk-basic-sub').innerText = data.checkout.basic.sub;
+        document.getElementById('chk-basic-bullets').innerHTML = data.checkout.basic.bullets.map(b => `<li>${b}</li>`).join('');
+        document.getElementById('chk-basic-btn').innerText = data.checkout.basic.btn;
+        
+        document.getElementById('chk-vip-title').innerText = data.checkout.vip.title;
+        document.getElementById('chk-vip-price').innerText = data.checkout.vip.price;
+        document.getElementById('chk-vip-sub').innerText = data.checkout.vip.sub;
+        document.getElementById('chk-vip-bullets').innerHTML = data.checkout.vip.bullets.map(b => `<li>${b}</li>`).join('');
+        document.getElementById('chk-vip-btn').innerText = data.checkout.vip.btn;
     }
     
     const videoEl = document.getElementById('vsl-video');

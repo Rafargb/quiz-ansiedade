@@ -264,58 +264,43 @@
         <section id="page-18" class="page">
             <div class="container checkout-page" style="padding-top: 1rem;">
                 <div class="checkout-header">
-                    <p class="checkout-subtitle">To definitively resolve your condition of</p>
-                    <h1 class="checkout-title" style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--primary);"><span id="checkout-status">Silent Overload</span></h1>
+                    <p class="checkout-subtitle">TO DEFINITIVELY RESOLVE YOUR CONDITION OF</p>
+                    <h1 class="checkout-title" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary);"><span id="checkout-status">...</span></h1>
+                    <p id="chk-main-subtitle" style="font-size: 1rem; opacity: 0.8; margin-bottom: 2rem;">...</p>
                 </div>
 
                 <div class="checkout-cards">
                     <!-- BASIC PLAN -->
                     <div class="pricing-card" onclick="window.location.href='https://checkout.com/basic'">
                         <div class="pricing-header">
-                            <h3>Basic Access</h3>
-                            <div class="price"><span>$</span> 47<span>.00</span></div>
+                            <h3 id="chk-basic-title">Basic Access</h3>
+                            <div class="price"><span>$</span> <span id="chk-basic-price">9.99</span></div>
                         </div>
-                        <p class="pricing-desc">The complete 4D EMOTIONAL RESET METHOD™.</p>
-                        <ul class="pricing-features">
-                            <li>✔ Immediate access</li>
-                            <li>✔ Email support</li>
+                        <p class="pricing-desc" id="chk-basic-sub">...</p>
+                        <ul class="pricing-features" id="chk-basic-bullets">
+                            <!-- Injected via JS -->
                         </ul>
-                        <button class="btn-pricing">CHOOSE THIS</button>
+                        <button class="btn-pricing" id="chk-basic-btn">CHOOSE THIS</button>
                     </div>
 
                     <!-- VIP PLAN (HIGHLIGHT) -->
                     <div class="pricing-card highlight" onclick="window.location.href='https://checkout.com/vip'">
-                        <div class="popular-badge">MOST CHOSEN</div>
+                        <div class="popular-badge">MOST CHOSEN ⭐</div>
                         <div class="pricing-header">
-                            <h3>VIP Access</h3>
-                            <div class="price"><span>$</span> 97<span>.00</span></div>
+                            <h3 id="chk-vip-title">VIP Access</h3>
+                            <div class="price"><span>$</span> <span id="chk-vip-price">29.99</span></div>
                         </div>
-                        <p class="pricing-desc">The complete Method + Follow-up and Extra Bonuses.</p>
-                        <ul class="pricing-features">
-                            <li>✔ Immediate access to the Method</li>
-                            <li>✔ VIP Support on WhatsApp</li>
-                            <li>✔ 3 Bonus Protocols</li>
+                        <p class="pricing-desc" id="chk-vip-sub">...</p>
+                        <ul class="pricing-features" id="chk-vip-bullets">
+                            <!-- Injected via JS -->
                         </ul>
-                        <button class="btn-pricing btn-highlight">I WANT VIP</button>
-                    </div>
-
-                    <!-- LIFETIME PLAN -->
-                    <div class="pricing-card" onclick="window.location.href='https://checkout.com/lifetime'">
-                        <div class="pricing-header">
-                            <h3>Lifetime Access</h3>
-                            <div class="price"><span>$</span> 147<span>.00</span></div>
-                        </div>
-                        <p class="pricing-desc">Everything in VIP, forever. Never lose access.</p>
-                        <ul class="pricing-features">
-                            <li>✔ Lifetime access</li>
-                            <li>✔ All future updates</li>
-                        </ul>
-                        <button class="btn-pricing">CHOOSE THIS</button>
+                        <button class="btn-pricing btn-highlight" id="chk-vip-btn">I WANT VIP</button>
                     </div>
                 </div>
 
-                <div class="secure-checkout">
-                    <p style="font-size: 0.75rem; text-align: center; opacity: 0.6; margin-top: 2rem;">🔒 100% secure payment. End-to-end encryption.</p>
+                <div class="secure-checkout" style="margin-top: 2.5rem; text-align: left; background: rgba(0,0,0,0.02); padding: 1.5rem; border-radius: 1rem; border: 1px dashed var(--border-color);">
+                    <p style="font-size: 0.85rem; margin-bottom: 1rem;"><span style="font-size: 1.1rem; vertical-align: middle;">🛡️</span> <strong>15-Day Guarantee:</strong> Try it risk-free. If within two weeks you don't feel the transformation in your body and mind, we will refund 100% of your investment. No questions asked, no hassle.</p>
+                    <p style="font-size: 0.85rem; opacity: 0.8;"><span style="font-size: 1.1rem; vertical-align: middle;">🔒</span> 100% secure payment. End-to-end encryption.</p>
                 </div>
             </div>
         </section>
