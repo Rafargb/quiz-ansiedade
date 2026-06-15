@@ -197,16 +197,39 @@
                 <div class="badge" style="margin-bottom: 1rem;">YOUR PROFILE: <span id="vsl-badge-status">...</span></div>
                 <div class="vsl-score-mini" style="font-size: 0.75rem; font-weight: 600; margin-bottom: 2rem;">Overload Index: <span id="vsl-score-val">...</span>/15</div>
                 
-                <div class="video-container" style="background: black; width: 100%; aspect-ratio: 9/16; border-radius: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: center; color: white; border: 2px solid var(--primary); overflow: hidden; position: relative;">
-                    <video id="vsl-video" class="blurred-video" controls playsinline autoplay muted style="width: 100%; height: 100%; object-fit: cover; display: none;">
-                        <source id="vsl-video-source" src="">
-                        Your browser does not support the video element.
-                    </video>
-                    
-                    <div id="vsl-overlay" class="vsl-overlay" onclick="unmuteVideo('vsl-video', 'vsl-overlay')">
+                <!-- Diagnósticos (Wistia) -->
+                <!-- Alerta Constante -->
+                <div id="vsl-wistia-alerta" class="video-container" style="display: none; border-radius: 1.5rem; border: 2px solid var(--primary); overflow: hidden; margin-bottom: 2.5rem; background: black; position: relative;">
+                    <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/lpzrrewmyq.js" async type="module"></script><style>wistia-player[media-id='lpzrrewmyq']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/lpzrrewmyq/swatch'); display: block; filter: blur(5px); padding-top:156.39%; }</style> 
+                    <wistia-player id="player-alerta" media-id="lpzrrewmyq" aspect="0.6394316163410302" class="blurred-video" autoplay muted playsinline></wistia-player>
+                    <div id="overlay-alerta" class="vsl-overlay" onclick="unmuteWistia('lpzrrewmyq', 'player-alerta', 'overlay-alerta')">
                         <div class="unmute-btn">
                             <span class="unmute-icon">🔊</span>
-                            <span class="unmute-text">Click to listen</span>
+                            <span class="unmute-text">Clique para ouvir</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sobrecarga Silenciosa -->
+                <div id="vsl-wistia-sobrecarga" class="video-container" style="display: none; border-radius: 1.5rem; border: 2px solid var(--primary); overflow: hidden; margin-bottom: 2.5rem; background: black; position: relative;">
+                    <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/84fbmsnkg6.js" async type="module"></script><style>wistia-player[media-id='84fbmsnkg6']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/84fbmsnkg6/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style> 
+                    <wistia-player id="player-sobrecarga" media-id="84fbmsnkg6" aspect="0.5625" class="blurred-video" autoplay muted playsinline></wistia-player>
+                    <div id="overlay-sobrecarga" class="vsl-overlay" onclick="unmuteWistia('84fbmsnkg6', 'player-sobrecarga', 'overlay-sobrecarga')">
+                        <div class="unmute-btn">
+                            <span class="unmute-icon">🔊</span>
+                            <span class="unmute-text">Clique para ouvir</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desequilíbrio Ocasional -->
+                <div id="vsl-wistia-desequilibrio" class="video-container" style="display: none; border-radius: 1.5rem; border: 2px solid var(--primary); overflow: hidden; margin-bottom: 2.5rem; background: black; position: relative;">
+                    <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/r7agyiyw3u.js" async type="module"></script><style>wistia-player[media-id='r7agyiyw3u']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/r7agyiyw3u/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style> 
+                    <wistia-player id="player-desequilibrio" media-id="r7agyiyw3u" aspect="0.5625" class="blurred-video" autoplay muted playsinline></wistia-player>
+                    <div id="overlay-desequilibrio" class="vsl-overlay" onclick="unmuteWistia('r7agyiyw3u', 'player-desequilibrio', 'overlay-desequilibrio')">
+                        <div class="unmute-btn">
+                            <span class="unmute-icon">🔊</span>
+                            <span class="unmute-text">Clique para ouvir</span>
                         </div>
                     </div>
                 </div>
@@ -227,16 +250,14 @@
             <div class="container offer-page">
                 <h1 style="font-size: 2.2rem; margin-bottom: 1.5rem;">There is a way to <br><span>get out of this.</span></h1>
                 
-                <div class="video-container" style="background: black; width: 100%; aspect-ratio: 9/16; border-radius: 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; color: white; border: 2px solid var(--primary); overflow: hidden; position: relative;">
-                    <video id="final-video" class="blurred-video" controls playsinline autoplay muted style="width: 100%; height: 100%; object-fit: cover;">
-                        <source src="IMG_7407.MOV">
-                        Your browser does not support the video element.
-                    </video>
-
-                    <div id="final-overlay" class="vsl-overlay" onclick="unmuteVideo('final-video', 'final-overlay')">
+                <div class="video-container" style="border-radius: 1.5rem; border: 2px solid var(--primary); overflow: hidden; margin-bottom: 2rem; background: black; position: relative;">
+                    <!-- VSL Final -->
+                    <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/f8rlnti94u.js" async type="module"></script><style>wistia-player[media-id='f8rlnti94u']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/f8rlnti94u/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style> 
+                    <wistia-player id="player-final" media-id="f8rlnti94u" aspect="0.5625" class="blurred-video" autoplay muted playsinline></wistia-player>
+                    <div id="overlay-final" class="vsl-overlay" onclick="unmuteWistia('f8rlnti94u', 'player-final', 'overlay-final')">
                         <div class="unmute-btn">
                             <span class="unmute-icon">🔊</span>
-                            <span class="unmute-text">Click to listen</span>
+                            <span class="unmute-text">Clique para ouvir</span>
                         </div>
                     </div>
                 </div>
@@ -274,7 +295,7 @@
                     <div class="pricing-card" onclick="window.location.href='https://checkout.com/basic'">
                         <div class="pricing-header">
                             <h3 id="chk-basic-title">Basic Access</h3>
-                            <div class="price"><span>$</span> <span id="chk-basic-price">9.99</span></div>
+                            <div class="price"><span>$</span> <span id="chk-basic-price">12.47</span></div>
                         </div>
                         <p class="pricing-desc" id="chk-basic-sub">...</p>
                         <ul class="pricing-features" id="chk-basic-bullets">
@@ -288,7 +309,7 @@
                         <div class="popular-badge">MOST CHOSEN ⭐</div>
                         <div class="pricing-header">
                             <h3 id="chk-vip-title">VIP Access</h3>
-                            <div class="price"><span>$</span> <span id="chk-vip-price">29.99</span></div>
+                            <div class="price"><span>$</span> <span id="chk-vip-price">19.47</span></div>
                         </div>
                         <p class="pricing-desc" id="chk-vip-sub">...</p>
                         <ul class="pricing-features" id="chk-vip-bullets">

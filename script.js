@@ -121,15 +121,7 @@ function nextPage(pageNumber) {
             renderQuestion();
         }
         
-        // Autoplay logic for video pages
-        if (pageNumber === 16) {
-            const vslVideo = document.getElementById('vsl-video');
-            if(vslVideo) vslVideo.play().catch(e => console.log("Autoplay prevented:", e));
-        }
-        if (pageNumber === 17) {
-            const finalVideo = document.getElementById('final-video');
-            if(finalVideo) finalVideo.play().catch(e => console.log("Autoplay prevented:", e));
-        }
+        // Wistia handles autoplay and mute correctly natively
     }, 400);
 }
 
@@ -254,20 +246,20 @@ const resultDetails = {
         symptoms: ["Racing thoughts", "Tiredness that sleep doesn't fix", "Constant mild irritation", "Difficulty unwinding"],
         break: "<p>This is not laziness. And it's not emotional weakness either.</p><p class='highlight-italic'>→ Your body just hasn't learned how to exit the alert state yet.</p>",
         concept: "<p>Resting is not stopping.</p><p class='highlight-italic'>👉 It's an internal state of the body.</p>",
-        video: "alerta_constante.MOV",
+        videoContainerId: "vsl-wistia-alerta",
         checkout: {
             title: "Constant Alert",
             subtitle: "Your Journey to Calm Begins NOW. Discover how to turn off your body's alarm mode and reclaim your peace.",
             basic: {
                 title: "1-Week Reset",
-                price: "9.99",
+                price: "12.47",
                 sub: "Perfect to experience the method and feel the very first relief from anxiety.",
                 bullets: ["✔ Immediate access to the 4D Method (Module 1)", "✔ 15-minute daily practical exercises", "✔ Email support"],
                 btn: "CHOOSE THIS"
             },
             vip: {
                 title: "1-Month Complete",
-                price: "29.99",
+                price: "19.47",
                 sub: "The ideal timeframe to quiet your mind, regulate your sleep, and break the cycle of chronic stress.",
                 bullets: ["✔ Everything included in the weekly plan", "✔ Action Plan: \"First Steps to Calm\"", "✔ VIP individual support via WhatsApp"],
                 btn: "I WANT VIP"
@@ -280,20 +272,20 @@ const resultDetails = {
         symptoms: ["Frequent tiredness", "Feeling of mental heaviness", "Lack of energy throughout the day", "Difficulty relaxing completely"],
         break: "<p>This is not just a heavy routine.</p><p class='highlight-italic'>👉 It's an accumulation your body hasn't been able to release yet.</p>",
         concept: "<p>The problem is not how much you do.</p><p class='highlight-italic'>👉 It's how much your body can recover.</p>",
-        video: "overload.MOV",
+        videoContainerId: "vsl-wistia-sobrecarga",
         checkout: {
             title: "Silent Overload",
             subtitle: "Your Journey to Rebalance Begins NOW. Effectively manage stress before it turns into complete burnout.",
             basic: {
                 title: "1-Week Energy Boost",
-                price: "9.99",
+                price: "12.47",
                 sub: "Take the first step against persistent fatigue and regain your mental clarity.",
                 bullets: ["✔ Immediate access to the 4D Method (Module 1)", "✔ Practical tools to combat mental fatigue", "✔ Email support"],
                 btn: "CHOOSE THIS"
             },
             vip: {
                 title: "1-Month Vitality",
-                price: "29.99",
+                price: "19.47",
                 sub: "Shield your mind against exhaustion and solidly rebuild your daily energy levels.",
                 bullets: ["✔ Everything included in the weekly plan", "✔ Activation Protocol: \"Awaken Your Energy\"", "✔ VIP individual support via WhatsApp"],
                 btn: "I WANT VIP"
@@ -306,20 +298,20 @@ const resultDetails = {
         symptoms: ["Good days and hard days with no clear explanation", "Energy swings", "Moments of occasional anxiety", "Feeling of emotional instability"],
         break: "<p>This is not a lack of control.</p><p class='highlight-italic'>👉 It's a lack of consistency in your system's functioning.</p>",
         concept: "<p>Calmness cannot depend on the day.</p><p class='highlight-italic'>👉 It must be sustained.</p>",
-        video: "desequilibrio_emocional.MOV",
+        videoContainerId: "vsl-wistia-desequilibrio",
         checkout: {
             title: "Occasional Imbalance",
             subtitle: "Your Journey to Control Begins NOW. Take the reins of your emotional life and master your responses to stress.",
             basic: {
                 title: "1-Week Control",
-                price: "9.99",
+                price: "12.47",
                 sub: "Ideal for learning how to cut off anxiety spikes the exact moment they arise.",
                 bullets: ["✔ Immediate access to the 4D Method (Module 1)", "✔ Quick-relief techniques for high-stress moments", "✔ Email support"],
                 btn: "CHOOSE THIS"
             },
             vip: {
                 title: "1-Month Mastery",
-                price: "29.99",
+                price: "19.47",
                 sub: "Develop long-term emotional stability and learn to respond calmly under any pressure.",
                 bullets: ["✔ Everything included in the weekly plan", "✔ Digital Intervention Kit: \"Emotional First Aid\"", "✔ VIP group & individual support via WhatsApp"],
                 btn: "I WANT VIP"
@@ -373,18 +365,15 @@ function showResult() {
         document.getElementById('chk-vip-btn').innerText = data.checkout.vip.btn;
     }
     
-    const videoEl = document.getElementById('vsl-video');
-    const videoSource = document.getElementById('vsl-video-source');
-    const videoPlaceholder = document.getElementById('vsl-video-placeholder');
+    const todosVideos = ['vsl-wistia-alerta', 'vsl-wistia-sobrecarga', 'vsl-wistia-desequilibrio'];
+    todosVideos.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.style.display = 'none';
+    });
     
-    if (data.video) {
-        videoSource.src = data.video;
-        videoEl.load();
-        videoEl.style.display = 'block';
-        if(videoPlaceholder) videoPlaceholder.style.display = 'none';
-    } else {
-        videoEl.style.display = 'none';
-        if(videoPlaceholder) videoPlaceholder.style.display = 'block';
+    if (data.videoContainerId) {
+        const activeVideo = document.getElementById(data.videoContainerId);
+        if (activeVideo) activeVideo.style.display = 'block';
     }
     
     nextPage('result');
@@ -406,16 +395,29 @@ function handleLead(event) {
 }
 
 // VIDEO UNMUTE & BLUR LOGIC
-function unmuteVideo(videoId, overlayId) {
-    const video = document.getElementById(videoId);
+function unmuteWistia(mediaId, playerId, overlayId) {
+    const playerEl = document.getElementById(playerId);
     const overlay = document.getElementById(overlayId);
     
-    if (video && overlay) {
-        video.muted = false;       // Tira o mudo
-        video.currentTime = 0;     // Reinicia do começo
-        video.classList.remove('blurred-video'); // Remove o blur
-        overlay.style.display = 'none'; // Some com o botão
-        video.play().catch(e => console.log("Play failed:", e));
+    if (playerEl && overlay) {
+        playerEl.classList.remove('blurred-video');
+        overlay.style.display = 'none';
+        
+        // Ativa o som e o play de forma SÍNCRONA para o navegador reconhecer o clique
+        try { playerEl.muted = false; } catch(e){}
+        try { playerEl.play(); } catch(e){}
+        
+        // Volta para o segundo 0 (tentamos os dois métodos de API possíveis)
+        try { playerEl.currentTime = 0; } catch(e){}
+        try { playerEl.time(0); } catch(e){}
+        
+        // Usando a API oficial do Wistia como backup/garantia
+        window._wq = window._wq || [];
+        window._wq.push({ id: mediaId, onReady: function(video) {
+            video.unmute();
+            video.time(0);
+            video.play();
+        }});
     }
 }
 
