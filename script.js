@@ -164,7 +164,7 @@ function renderQuestion() {
                         contBtn.id = 'continue-btn';
                         contBtn.className = 'btn-primary';
                         contBtn.style.marginTop = '2rem';
-                        contBtn.innerText = 'CONTINUE →';
+                        contBtn.innerText = 'NEXT STEP →';
                         contBtn.onclick = () => {
                             let totalPoints = 0;
                             selectedOptions.forEach(i => totalPoints += q.options[i].points);
